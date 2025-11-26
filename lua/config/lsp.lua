@@ -1,3 +1,5 @@
+-- call lsp
+
 -- keymaps attached with autocmd
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -24,6 +26,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
+-- general diagnostic config, e.g. syntax error highlighting etc...
 vim.diagnostic.config({
     virtual_lines = false,   -- Enable virtual lines for diagnostics
     signs = true,            -- Show signs in the gutter
