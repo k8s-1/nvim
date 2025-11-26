@@ -9,7 +9,7 @@
 - fd
 
 ### Plugin dependencies
-- npm
+- npm (required to install bashls)
 - shellcheck (required by bashls)
 
 ## LSP, linting, formatting
