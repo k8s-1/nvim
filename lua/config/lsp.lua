@@ -9,6 +9,13 @@ vim.lsp.config('*', {
   root_markers = { '.git' },
 })
 
+vim.lsp.config('bashls')
+vim.lsp.config('eslint')
+vim.lsp.config('gopls')
+vim.lsp.config('lua_ls')
+vim.lsp.config('rust_analyzer')
+vim.lsp.config('yamlls')
+
 -- keymaps attached with autocmd
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
