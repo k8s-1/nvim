@@ -24,30 +24,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
--- CUE config -> replace with cuelang lsp if available one day
--- treat cue files as javascript for better syntax highlighting and commenting //
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "*.cue",
-  callback = function()
-    vim.bo.filetype = "javascript"
-  end,
-})
--- Set up a keybinding for formatting .cue files with cue fmt when F3 is pressed
-vim.api.nvim_set_keymap('n', '<F3>', ':lua FormatCueFile()<CR>', { noremap = true, silent = true })
--- Define a function that runs cue fmt and cue fix on the current file
-function FormatCueFile()
-  if vim.fn.expand('%:e') == 'cue' then
-    vim.cmd('silent !cue fix %')
-    vim.cmd('silent !cue fmt %')
-    vim.cmd('edit!') -- Reload the file after formatting
-  else
-    print("Not a CUE file!")
-  end
-end
-
-
-
--- type laeder + q to open the quickfix list
+-- type leader + q to open the quickfix list
 -- show diagnostics on hold over line
 vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
