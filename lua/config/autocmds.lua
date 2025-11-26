@@ -22,3 +22,5 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 4    -- Indent width for auto-indent (4 spaces)
   end,
 })
+
+
