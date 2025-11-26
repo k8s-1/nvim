@@ -29,6 +29,12 @@ require("lazy").setup("plugins")
 ---
 require("config.lsp")
 
+
+--- TODO: FIX THIS, HOW DO YOU AUTOMATICALLY PULL CONFIGS WITH NVIM 11?
+--- https://github.com/neovim/nvim-lspconfig old approach is deprecated
+--- https://neovim.io/doc/user/lsp.html is sparsely documented
+--- provides more details https://deepwiki.com/neovim/nvim-lspconfig
+
 vim.lsp.config('*', {
   capabilities = {
     textDocument = {
