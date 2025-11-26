@@ -14,7 +14,7 @@ return {
     })
     vim.keymap.set("n", "<leader>f", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true, noremap = true })
     vim.keymap.set("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true, noremap = true })
-    vim.keymap.set("n", "<leader>/", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>",
+    vim.keymap.set("n", "<leader>/", "<cmd>lua require('fzf-lua').live_grep()<CR>",
       { silent = true, noremap = true })
   end
   -- NAVIGATION
