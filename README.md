@@ -9,11 +9,8 @@
 - fd
 
 ### Plugin dependencies
-```
-sudo apt install -y nodejs npm # required by Mason installs e.g. bashls
+- npm
 - shellcheck (required by bashls)
-```
-
 
 ## LSP, linting, formatting
 LSP provides linting, formatting capabilities, and more...
