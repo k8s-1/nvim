@@ -28,6 +28,17 @@ require("lazy").setup("plugins")
 --- load settings
 require("config.lsp")
 
+vim.lsp.config('*', {
+  capabilities = {
+    textDocument = {
+      semanticTokens = {
+        multilineTokenSupport = true,
+      }
+    }
+  },
+  root_markers = { '.git' },
+})
+
 --- load lsp
 ---
 -- to override defaults, see https://github.com/neovim/nvim-lspconfig, use a second { } value
@@ -47,7 +58,7 @@ local lsps = {
     { "eslint" },
 }
 
-for _, lsp in lsps do
+for _, lsp in pairs(lsps) do
     vim.lsp.enable(lsp)
 end
 --- LSP
