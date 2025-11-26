@@ -3,14 +3,16 @@
 ## Prerequisites
 ### Core neovim dependencies
 - color-supported tty
-- nerdfont
+- nerdfont (to see icons properly, e.g. MesloLGLDZNerdFont-Regular.ttf)
 - ripgrep
 - fzf
 - fd
 
 ### Plugin dependencies
-- npm (required by bashls)
+```
+sudo apt install -y nodejs npm # required by Mason installs e.g. bashls
 - shellcheck (required by bashls)
+```
 
 
 ## LSP, linting, formatting
