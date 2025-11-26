@@ -17,7 +17,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---- lazy load ./lua/plugins/*.lua
+--- load ./lua/plugins/*.lua
 require("lazy").setup("plugins")
 
 
