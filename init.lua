@@ -6,57 +6,52 @@ require("config.autocmds")
 -- :checkhealth lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
---- lazy load ./lua/plugins/*.lua
+-- lazy load ./lua/plugins/*.lua
 require("lazy").setup("plugins")
 
 
---- LSP
---- 1. configs in https://github.com/neovim/nvim-lspconfig
---- copy to ./lua/<language-server>.lua
----
---- 2. (!) install language server via mason
----
+-- LSP
+-- load basic config for built-in lsp commands
 require("config.lsp")
 
+-- 1. language server is installed with mason plugin instead of e.g. npm -i <name>, pip install etc...,
+-- put new servers into mason.lua before adding them here
+-- 2. defaults are loaded via nvim-lspconfig plugin,
+-- vim.lsp.config automatically finds nvim-lspconfig configs and merges with any local lsp/*.lua configs
+-- 3. override defaults below by adding a second entry to the language_servers list
 
---- TODO: FIX THIS, HOW DO YOU AUTOMATICALLY PULL CONFIGS WITH NVIM 11?
---- https://github.com/neovim/nvim-lspconfig old approach is deprecated
---- https://neovim.io/doc/user/lsp.html is sparsely documented
---- provides more details https://deepwiki.com/neovim/nvim-lspconfig
-
-vim.lsp.config('*', {
-  capabilities = {
-    textDocument = {
-      semanticTokens = {
-        multilineTokenSupport = true,
-      }
-    }
-  },
-  root_markers = { '.git' },
-})
-
-local lsps = {
-    "lua_ls",
-    "rust_analyzer",
-    "bashls",
-    "yamlls",
-    "gopls",
-    "eslint",
+-- calls ./lsp/<language-server>.lua
+local language_servers = {
+  "lua_ls",
+  "rust_analyzer",
+  "bashls",
+  "yamlls",
+  "gopls",
+  "eslint",
+  -- with config example to override nvim-lspconfig
+  -- { "rust_analyzer", {
+  --  settings = ['rust-analyzer'] = {},
+  --  }
+  -- }
 }
 
-for _, lsp in ipairs(lsps) do
-    vim.lsp.enable(lsp)
+for _, ls in pairs(language_servers) do
+    local name, config = ls[1], ls[2]
+    if config then
+        vim.lsp.config(name, config)
+    end
+    vim.lsp.enable(name)
 end
 
---- LSP
+-- LSP
