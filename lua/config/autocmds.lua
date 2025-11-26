@@ -22,25 +22,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 4    -- Indent width for auto-indent (4 spaces)
   end,
 })
-
-
--- type leader + q to open the quickfix list
--- show diagnostics on hold over line
-vim.api.nvim_create_autocmd("CursorHold", {
-    callback = function()
-        local line_diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })
-        if #line_diagnostics > 0 then
-            vim.diagnostic.config({
-                virtual_lines = true,
-            })
-        end
-    end,
-})
--- disable line diagnostics when moving the cursor
-vim.api.nvim_create_autocmd("CursorMoved", {
-    callback = function()
-        vim.diagnostic.config({
-            virtual_lines = false, -- Disable virtual text when cursor moves
-        })
-    end,
-})

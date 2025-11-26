@@ -2,10 +2,21 @@ return {
   -- expose language server to lsp
   {
     "hrsh7th/cmp-nvim-lsp",
+    config = function()
+      -- import cmp-nvim-lsp plugin
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+      -- used to enable autocompletion (assign to every lsp server config)
+      local capabilities = cmp_nvim_lsp.default_capabilities()
+
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
+    end,
   },
   -- snippet engine and sources
   {
-    "L3MON4D3/LuaSnip", -- snippet engine
+    "L3MON4D3/LuaSnip",              -- snippet engine
     dependencies = {
       "saadparwaiz1/cmp_luasnip",    -- auto-completion feature for nvim-cmp
       "rafamadriz/friendly-snippets" -- contains snippets
@@ -55,7 +66,7 @@ return {
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' }, -- use lsp as a source
-          { name = 'luasnip' }, -- For luasnip users.
+          { name = 'luasnip' },  -- For luasnip users.
         }, {
           { name = 'buffer' },
         })
