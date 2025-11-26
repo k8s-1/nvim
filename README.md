@@ -23,6 +23,7 @@ https://neovim.io/doc/user/lsp.html
 ```
 
 ## Structure
+```
 .
 ├── init.lua
 ├── lua
@@ -34,6 +35,7 @@ https://neovim.io/doc/user/lsp.html
 │       └── plugin.lua
 │       └── ...
 └── README.md
+```
 
 Plugins are lazy-loaded by :Lazy package manager,
 initialized in init.lua in the root directory.
