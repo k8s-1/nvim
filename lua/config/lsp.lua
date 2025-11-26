@@ -1,5 +1,3 @@
--- call lsp
-
 -- keymaps attached with autocmd
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
