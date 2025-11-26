@@ -39,19 +39,15 @@ local language_servers = {
   "yamlls",
   "gopls",
   "eslint",
-  -- with config example to override nvim-lspconfig
-  -- { "rust_analyzer", {
-  --  settings = ['rust-analyzer'] = {},
-  --  }
-  -- }
 }
 
-for _, ls in pairs(language_servers) do
-    local name, config = ls[1], ls[2]
-    if config then
-        vim.lsp.config(name, config)
-    end
-    vim.lsp.enable(name)
+for _, l in ipairs(language_servers) do
+    vim.lsp.enable(l)
 end
+
+-- to override defaults, use vim.lsp.config, e.g.
+-- vim.lsp.config('clangd', {
+--   filetypes = { 'c' },
+-- })
 
 -- LSP
