@@ -93,7 +93,6 @@ return {
       })
 
       vim.diagnostic.config({
-        virtual_text = false, -- Disable inline diagnostics if using virtual_lines
         virtual_lines = false, -- Enable virtual lines for diagnostics
         signs = true,      -- Show signs in the gutter
         underline = true,  -- Underline problematic text
