@@ -1,13 +1,3 @@
-vim.lsp.config('*', {
-  capabilities = {
-    textDocument = {
-      semanticTokens = {
-        multilineTokenSupport = true,
-      }
-    }
-  },
-  root_markers = { '.git' },
-})
 
 -- keymaps attached with autocmd
 vim.api.nvim_create_autocmd('LspAttach', {
