@@ -19,15 +19,38 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
-vim.lsp.config('*', {
-  capabilities = {
-    textDocument = {
-      semanticTokens = {
-        multilineTokenSupport = true,
-      }
-    }
-  },
-  root_markers = { '.git' },
-})
 
+--- LSP
+---
+--- (!) install via mason first
+---
+--- load settings
 require("config.lsp")
+
+--- load lsp
+---
+-- to override defaults, see https://github.com/neovim/nvim-lspconfig, use a second { } value
+-- {
+--     "clangd",
+--     {
+--         init_options = ...
+--     }
+-- },
+
+local lsps = {
+    { "lua_ls" },
+    { "rust_analyzer" },
+    { "bashls" },
+    { "yamlls" },
+    { "gopls" },
+    { "eslint" },
+}
+
+for _, lsp in pairs(lsps) do
+    local name, config = lsp[1], lsp[2]
+    vim.lsp.enable(name)
+    if config then
+        vim.lsp.config(name, config)
+    end
+end
+--- LSP

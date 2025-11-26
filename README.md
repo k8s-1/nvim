@@ -13,6 +13,10 @@
 - shellcheck (required by bashls)
 
 ## LSP, linting, formatting
+- install the language server via mason :Mason OR configure in mason.lua for persistence
+- add it to init.lua to load it
+- lsp handles linting and formatting
+
 https://neovim.io/doc/user/lsp.html
 ```
 :checkhealth vim.lsp
