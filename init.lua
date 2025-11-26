@@ -47,11 +47,7 @@ local lsps = {
     { "eslint" },
 }
 
-for _, lsp in pairs(lsps) do
-    local name, config = lsp[1], lsp[2]
-    vim.lsp.enable(name)
-    if config then
-        vim.lsp.config(name, config)
-    end
+for _, lsp in lsps do
+    vim.lsp.enable(lsp)
 end
 --- LSP
