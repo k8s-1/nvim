@@ -15,6 +15,10 @@
 ## LSP, linting, formatting
 https://neovim.io/doc/user/lsp.html
 
+```
+:checkhealth vim.lsp
+```
+
 ## Structure
 .
 ├── init.lua
