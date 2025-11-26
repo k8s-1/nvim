@@ -22,10 +22,11 @@ require("lazy").setup("plugins")
 
 
 --- LSP
+--- 1. configs in https://github.com/neovim/nvim-lspconfig
+--- copy to ./lua/<language-server>.lua
 ---
---- (!) install via mason first
+--- 2. (!) install language server via mason
 ---
---- load settings
 require("config.lsp")
 
 vim.lsp.config('*', {
@@ -39,26 +40,17 @@ vim.lsp.config('*', {
   root_markers = { '.git' },
 })
 
---- load lsp
----
--- to override defaults, see https://github.com/neovim/nvim-lspconfig, use a second { } value
--- {
---     "clangd",
---     {
---         init_options = ...
---     }
--- },
-
 local lsps = {
-    { "lua_ls" },
-    { "rust_analyzer" },
-    { "bashls" },
-    { "yamlls" },
-    { "gopls" },
-    { "eslint" },
+    "lua_ls",
+    "rust_analyzer",
+    "bashls",
+    "yamlls",
+    "gopls",
+    "eslint",
 }
 
-for _, lsp in pairs(lsps) do
+for _, lsp in ipairs(lsps) do
     vim.lsp.enable(lsp)
 end
+
 --- LSP
