@@ -13,10 +13,7 @@
 - shellcheck (required by bashls)
 
 ## LSP, linting, formatting
-LSP provides linting, formatting capabilities, and more...
-It's what turns a modal editor into a fully-fledged IDE experience.
-Refer to plugins config for details.
-
+https://neovim.io/doc/user/lsp.html
 
 ## Structure
 .
