@@ -9,24 +9,6 @@ return {
       vim.keymap.set("n", "<leader>gb", ":Git blame<CR>")
       vim.keymap.set("n", "<leader>gs", ":Git status<CR>")
 
-      -- CUSTOM CODE | DOES NOT DEPEND ON VIM-FUGITIVE, LAZY ADD/COMMIT FUNCTION
-      local function git_push()
-        print("begin push...")
-        local push_handle = io.popen('git push --all &> /dev/null 2>&1; git status')
-        if push_handle then
-          local branch_status = push_handle:read("*a")
-          branch_status = branch_status:gsub("\n", ""):match("Your branch is.-%.")
-          print("pushed! -", branch_status)
-          push_handle:close()
-        else
-          print("Error: Unable to execute git push command")
-        end
-      end
-      -- DOES NOT DEPEND ON VIM-FUGITIVE, LAZY ADD/COMMIT FUNCTION
-      vim.keymap.set('n', '<leader>gp', git_push, { noremap = true, silent = false })
-
-
-
       -- DOES NOT DEPEND ON VIM-FUGITIVE, LAZY ADD/COMMIT FUNCTION
       local function git_add_and_commit()
         local handle = io.popen('git diff --name-only && git add -A')
